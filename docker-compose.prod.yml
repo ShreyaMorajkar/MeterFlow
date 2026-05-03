@@ -1,0 +1,78 @@
+services:
+  meterflow:
+    build:
+      context: .
+      args:
+        VITE_API_URL: ""
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      SERVE_WEB: "true"
+      APP_ORIGIN: ${APP_ORIGIN:-https://your-domain.com}
+      BASE_URL: ${BASE_URL:-https://your-domain.com}
+      JWT_SECRET: ${JWT_SECRET:-replace-me-before-public-deploy}
+      DATABASE_URL: postgres://meterflow:${POSTGRES_PASSWORD:-meterflow}@postgres:5432/meterflow
+      MONGO_URL: mongodb://mongo:27017/meterflow
+      REDIS_URL: redis://redis:6379
+      UPGRADE_URL: ${BASE_URL:-https://your-domain.com}/billing
+      # Razorpay Configuration
+      RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID:-}
+      RAZORPAY_KEY_SECRET: ${RAZORPAY_KEY_SECRET:-}
+      RAZORPAY_WEBHOOK_SECRET: ${RAZORPAY_WEBHOOK_SECRET:-}
+      RAZORPAY_PAYMENT_DESCRIPTION: ${RAZORPAY_PAYMENT_DESCRIPTION:-MeterFlow Pro upgrade}
+      RAZORPAY_AMOUNT_PAISE: ${RAZORPAY_AMOUNT_PAISE:-49900}
+      RAZORPAY_CURRENCY: ${RAZORPAY_CURRENCY:-INR}
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongo:
+        condition: service_started
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4000/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: meterflow
+      POSTGRES_USER: meterflow
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-meterflow}
+    volumes:
+      - meterflow-prod-postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meterflow -d meterflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mongo:
+    image: mongo:7
+    volumes:
+      - meterflow-prod-mongo:/data/db
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - meterflow-prod-redis:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  meterflow-prod-postgres:
+  meterflow-prod-mongo:
+  meterflow-prod-redis:

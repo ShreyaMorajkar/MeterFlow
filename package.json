@@ -1,0 +1,26 @@
+{
+  "name": "meterflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Usage-based API billing and metering platform MVP.",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace apps/server\" \"npm run dev --workspace apps/web\"",
+    "demo": "concurrently \"npm run demo --workspace apps/server\" \"npm run dev --workspace apps/web\"",
+    "dev:server": "npm run dev --workspace apps/server",
+    "dev:web": "npm run dev --workspace apps/web",
+    "build": "npm run build --workspaces",
+    "start": "npm run start --workspace apps/server",
+    "docker:build": "docker build -t meterflow .",
+    "docker:prod": "docker compose -f docker-compose.prod.yml up --build -d",
+    "docker:down": "docker compose -f docker-compose.prod.yml down"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

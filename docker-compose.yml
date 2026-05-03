@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: meterflow
+      POSTGRES_USER: meterflow
+      POSTGRES_PASSWORD: meterflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - meterflow-postgres:/var/lib/postgresql/data
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - meterflow-mongo:/data/db
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - meterflow-redis:/data
+
+volumes:
+  meterflow-postgres:
+  meterflow-mongo:
+  meterflow-redis:

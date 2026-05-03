@@ -1,0 +1,460 @@
+:root {
+  color: #17202a;
+  background: #f6f8fb;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.authShell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    linear-gradient(120deg, rgba(27, 64, 121, 0.1), rgba(25, 135, 84, 0.08)),
+    #f7fafc;
+}
+
+.authPanel {
+  width: min(460px, 100%);
+  background: #ffffff;
+  border: 1px solid #dce3ea;
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 24px 70px rgba(25, 39, 52, 0.12);
+}
+
+.brandRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.brandRow h1,
+.topbar h1 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.brandRow p {
+  margin: 5px 0 0;
+  color: #637081;
+}
+
+.brandRow.compact {
+  margin-bottom: 28px;
+}
+
+.brandMark {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #145c54;
+}
+
+.authForm,
+.stackForm {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: #405164;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #cdd6e1;
+  border-radius: 7px;
+  padding: 11px 12px;
+  color: #17202a;
+  background: #ffffff;
+}
+
+input:focus {
+  outline: 3px solid rgba(20, 92, 84, 0.14);
+  border-color: #145c54;
+}
+
+.primaryButton,
+.secondaryButton,
+.ghostButton,
+.textButton,
+.iconButton {
+  border: 0;
+  border-radius: 7px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.primaryButton {
+  background: #145c54;
+  color: #ffffff;
+  padding: 0 16px;
+  font-weight: 750;
+}
+
+.secondaryButton {
+  background: #eef4f1;
+  color: #145c54;
+  padding: 0 14px;
+  font-weight: 700;
+}
+
+.secondaryButton.small {
+  min-height: 34px;
+  font-size: 13px;
+}
+
+.ghostButton,
+.textButton {
+  color: #526173;
+  background: transparent;
+}
+
+.iconButton {
+  width: 40px;
+  background: #eef2f6;
+  color: #243445;
+}
+
+.error {
+  margin: 0;
+  color: #b42318;
+  font-weight: 700;
+}
+
+.appShell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+
+.sidebar {
+  background: #111827;
+  color: #ffffff;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 8px;
+}
+
+.sidebar a {
+  min-height: 42px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  color: #cbd5e1;
+}
+
+.sidebar a.active {
+  background: #213044;
+  color: #ffffff;
+}
+
+.sidebar .ghostButton {
+  margin-top: auto;
+  justify-content: flex-start;
+  color: #d7dee9;
+}
+
+.workspace {
+  padding: 28px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  display: block;
+  color: #137162;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric,
+.panel {
+  background: #ffffff;
+  border: 1px solid #dce3ea;
+  border-radius: 8px;
+}
+
+.metric {
+  padding: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.metricIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  color: #145c54;
+  background: #e8f4ef;
+}
+
+.metricIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.metric span,
+.metric small,
+.muted {
+  color: #64748b;
+}
+
+.metric strong {
+  font-size: 26px;
+  letter-spacing: 0;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.twoColumn.bottom {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.panel {
+  padding: 18px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.panelHeader h2 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.curlBox {
+  margin: 0;
+  padding: 14px;
+  border-radius: 7px;
+  color: #d8f3dc;
+  background: #0b1220;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.emptyState {
+  min-height: 132px;
+  border: 1px dashed #b8c4d3;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #627084;
+  padding: 20px;
+}
+
+.emptyState.small {
+  min-height: 80px;
+}
+
+.pulseLine {
+  margin-top: 12px;
+  color: #145c54;
+  font-weight: 750;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #e1e7ee;
+  border-radius: 7px;
+  padding: 12px;
+}
+
+.listItem div {
+  display: grid;
+  gap: 4px;
+}
+
+.listItem span {
+  color: #66758a;
+  font-size: 13px;
+}
+
+.logTable {
+  display: grid;
+  gap: 8px;
+}
+
+.logRow {
+  display: grid;
+  grid-template-columns: 72px 1fr 64px 74px;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #edf1f5;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.logRow strong {
+  overflow-wrap: anywhere;
+}
+
+.invoiceNote {
+  margin: 14px 0 0;
+  color: #145c54;
+  font-weight: 750;
+}
+
+@media (max-width: 920px) {
+  .appShell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .metricsGrid,
+  .twoColumn,
+  .twoColumn.bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .workspace {
+    padding: 18px;
+  }
+
+  .logRow {
+    grid-template-columns: 56px 1fr;
+  }
+}
+
+/* Billing Tab Styles */
+.billingContent {
+  padding: 20px 0;
+}
+
+.planInfo {
+  margin-bottom: 24px;
+}
+
+.planStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.badge {
+  background: #145c54;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.planActions {
+  margin-bottom: 32px;
+}
+
+.usageInfo {
+  border-top: 1px solid #e5e9f0;
+  padding-top: 20px;
+}
+
+.usageInfo h3 {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #637081;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.usageRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.usageRow:last-child {
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.usageRow span:first-child {
+  color: #637081;
+}
+
+.usageRow span:last-child {
+  font-weight: 500;
+}

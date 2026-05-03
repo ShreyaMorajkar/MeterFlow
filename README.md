@@ -100,22 +100,22 @@ The core of MeterFlow is its API gateway that sits between API consumers and pro
 - Live updates for API calls and billing status
 - Self-service key management and billing portal
 
-## Screenshots of Functionalities
+## Workflow Screenshots
 
-### Dashboard Overview
-Main dashboard showing usage metrics (0 requests this month, 0ms average latency, 0 errors, ₹0.00 current bill), API creation form with name and origin URL fields, and navigation sidebar with Usage, API keys, and Billing tabs after login.
+### 1. Empty dashboard
+The starting state after sign-in, before an API has been created.
 
-### API Key Management
-API keys interface showing generated test key "mf_test_uNOnHZyDpOP4epFA57cMh3xiX7X1Bt5s" with "Default test key" label, test environment indicator, active status, PokeAPI demo association, and "Rotate key" button. Includes cURL command for testing and "Copy cURL" button.
+![Empty dashboard](<D:/skill stacking/Internship 1(La.....i.)/MeterFlow/screenshots/workflow-1-empty-dashboard.png>)
 
-### Usage Analytics
-Usage dashboard displaying 1 request this month (1% of free tier), 188ms average latency ("Gateway overhead visible"), 0 errors, ₹0.00 current bill (₹10,000.00 hard cap). Shows request ledger with GET /pokemon/ditto entry (200 status, 188ms response time).
+### 2. API key and first-call setup
+After creating an API, MeterFlow shows a one-time managed key and a copyable cURL command for the activation flow.
 
-### Billing Portal
-Subscription management showing "Current Plan: Free" with upgrade prompt, "Upgrade to Pro" button. Usage summary: 1 request included in free tier (1,000), ₹0.10 overage rate per 100 requests, ₹0.00 current bill.
+![API key and cURL setup](<D:/skill stacking/Internship 1(La.....i.)/MeterFlow/screenshots/workflow-2-key-and-curl.png>)
 
-### API Gateway Logs
-Request ledger section showing real-time API call logs with method (GET), endpoint (/pokemon/ditto), status code (200), and response time (188ms). Includes "Calculate bill" button for billing operations.
+### 3. Usage ledger after a real request
+Once the cURL command is run, the dashboard updates with request count, latency, and the request ledger entry.
+
+![Usage ledger after request](<D:/skill stacking/Internship 1(La.....i.)/MeterFlow/screenshots/workflow-3-usage-ledger.png>)
 
 ## Flowcharts
 

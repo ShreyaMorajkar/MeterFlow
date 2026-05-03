@@ -5,3 +5,11 @@ dist
 *.log
 coverage
 .DS_Store
+*.out
+out*.txt
+nodetxt*.txt
+processes.txt
+apihealth.json
+web.html
+test_import.mjs
+screenshots/test-shot.png
